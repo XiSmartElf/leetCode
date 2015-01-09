@@ -1,9 +1,12 @@
 package leetCode;
+//I used A* but I cannot believe I got TLE
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
+import java.util.PriorityQueue;
 import java.util.Set;
 
 public class _126_Word_Ladder_II {
@@ -11,89 +14,116 @@ public class _126_Word_Ladder_II {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
-		Set<String> dict = new HashSet<String>(Arrays.asList("hot","dot","dog","lot","log"));
-		String start ="hit";
-		String end = "cog";
+		Set<String> dict = new HashSet<String>(Arrays.asList("si","go","se","cm","so","ph","mt","db","mb","sb","kr","ln","tm","le","av","sm","ar","ci","ca","br","ti","ba","to","ra","fa","yo","ow","sn","ya","cr","po","fe","ho","ma","re","or","rn","au","ur","rh","sr","tc","lt","lo","as","fr","nb","yb","if","pb","ge","th","pm","rb","sh","co","ga","li","ha","hz","no","bi","di","hi","qa","pi","os","uh","wm","an","me","mo","na","la","st","er","sc","ne","mn","mi","am","ex","pt","io","be","fm","ta","tb","ni","mr","pa","he","lr","sq","ye"));
+		String start ="qa";
+		String end = "sq";
+		final long startTime = System.currentTimeMillis();
+
 		System.out.println(findLadders(start, end, dict));
+		final long endTime = System.currentTimeMillis();
+
+		System.out.println("Total execution time: " + (endTime - startTime) );
 		
 	}
-	
-	
-	List<List<String>> results;
-    List<String> list;
-    Map<String,List<String>> map;
+
     public static List<List<String>> findLadders(String start, String end, Set<String> dict) {
-            results= new ArrayList<List<String>>();
-            if (dict.size() == 0)
-                return results;
-
-            int curr=1,next=0;          
-            boolean found=false;            
-            list = new LinkedList<String>();           
-            map = new HashMap<String,List<String>>();
-
-            Queue<String> queue= new ArrayDeque<String>();
-            Set<String> unvisited = new HashSet<String>(dict);
-            Set<String> visited = new HashSet<String>();
-
-            queue.add(start);           
-            unvisited.add(end);
-            unvisited.remove(start);
-            //BFS
-            while (!queue.isEmpty()) {
-
-                String word = queue.poll();
-                curr--;             
-                for (int i = 0; i < word.length(); i++){
-                   StringBuilder builder = new StringBuilder(word); 
-                    for (char ch='a';  ch <= 'z'; ch++){
-                        builder.setCharAt(i,ch);
-                        String new_word=builder.toString(); 
-                        if (unvisited.contains(new_word)){
-                            //Handle queue
-                            if (visited.add(new_word)){//Key statement,Avoid Duplicate queue insertion
-                                next++;
-                                queue.add(new_word);
-                            }
-
-                            if (map.containsKey(new_word))//Build Adjacent Graph
-                                map.get(new_word).add(word);
-                            else{
-                                List<String> l= new LinkedList<String>();
-                                l.add(word);
-                                map.put(new_word, l);
-                            }
-
-                            if (new_word.equals(end)&&!found) found=true;       
-
-                        }
-
-                    }//End:Iteration from 'a' to 'z'
-                }//End:Iteration from the first to the last
-                if (curr==0){
-                    if (found) break;
-                    curr=next;
-                    next=0;
-                    unvisited.removeAll(visited);
-                    visited.clear();
-                }
-            }//End While
-
-            backTrace(end,start);
-
-            return results;        
-        }
-        private void backTrace(String word,String start){
-            if (word.equals(start)){
-                list.add(0,start);
-                results.add(new ArrayList<String>(list));
-                list.remove(0);
-                return;
+    	PriorityQueue<node> ShortPath = new PriorityQueue<node>(dict.size()* start.length(), new Comparator<node>(){
+            @Override
+            public int compare(node o1,node o2){
+                if (o1.evaluationVal<o2.evaluationVal)
+                    return -1;
+                else if (o1.evaluationVal==o2.evaluationVal)
+                    return 0;
+                else 
+                    return 1;
             }
-            list.add(0,word);
-            if (map.get(word)!=null)
-                for (String s:map.get(word))
-                    backTrace(s,start);
-            list.remove(0);
+        });
+    	dict.add(end);
+    	int current_cost=0;
+		String currentString=start;
+		node currentNode = new node(start, 0,end, new ArrayList<String>());
+		List<List<String>> res = new  ArrayList<List<String>>();
+		int globalBest = 0;
+		boolean firstTime=true;
+    	while(true)
+    	{			
+    		ArrayList<String>childNodes = get_childNodes(currentString,dict);
+    		//System.out.println(currentNode.currentPath+Integer.toString(currentNode.evaluationVal)+"");
+    		//evaluate each childnodes and put it queue if not in the explored set.
+		    if(childNodes.contains(end))
+		    {
+		        currentNode.currentPath.add(end);
+		        if(firstTime)
+    			{
+    				globalBest = currentNode.cost; 
+    				firstTime=false;
+    			}
+    			if(currentNode.cost>globalBest)
+    				break;
+    			res.add(currentNode.currentPath);
+		    }
+			else
+			{
+			    for(int i=0; i<childNodes.size();i++)
+		        {
+        			if(!currentNode.currentPath.contains(childNodes.get(i)))
+        				ShortPath.add(new node(childNodes.get(i), current_cost+1, end, currentNode.currentPath));
+		        }
+			}
+		    
+    		//find the minimum path
+    		if(ShortPath.isEmpty())
+    			break;
+    		currentNode=ShortPath.poll();
+    		currentString=currentNode.stringVal;
+    		current_cost=currentNode.cost;
+    	} 	
+    	
+    	return res;
+    }
+    
+    
+    //getting valid childnodes(one char difference) of the currentnode
+    public static ArrayList<String>get_childNodes(String yourString, Set<String> dict)
+    {
+    	ArrayList<String> childNodes = new ArrayList<String>();
+    	for(String ref:dict)
+    	{
+    		int count = 0;
+    		for(int i=0;i<yourString.length();i++)
+    			if(yourString.charAt(i)!=ref.charAt(i))
+    				count++;
+    		if(count<=1)
+    			childNodes.add(ref);   		
+    	}
+    	return childNodes;
+    }
+    
+    //def of a node
+    public static class node
+    {
+    	String stringVal;
+    	int evaluationVal;
+    	int cost;
+    	ArrayList<String> currentPath= new ArrayList<String>();
+    	node(String stringVal,int cost, String target, ArrayList<String>currentPath)
+    	{
+    		this.stringVal=stringVal;
+    		this.cost = cost;
+    		this.evaluationVal=cost + get_Heuristic(stringVal,target);
+    		this.currentPath.addAll(currentPath);
+    		this.currentPath.add(stringVal);
+    	}
+    	
+        public  int get_Heuristic(String target, String yourString)
+        {
+        	int count = 0;
+        	for(int i =0; i<target.length();i++)
+        	{
+        		if(target.charAt(i)!=yourString.charAt(i))
+        			count++;
+        	}
+        	return count;
         }
+    }
 }

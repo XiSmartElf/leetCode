@@ -29,6 +29,7 @@ public class _79_Word_Search {
     
     public static boolean search(char[][] board, String word, int startIndex, int m, int n, boolean[][] visited)
     {
+	    
     	//System.out.println(visited[0][0]);
     	boolean found1 = false;
     	boolean found2 = false;
