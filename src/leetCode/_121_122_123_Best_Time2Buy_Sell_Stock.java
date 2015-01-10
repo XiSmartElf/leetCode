@@ -10,7 +10,9 @@ package leetCode;
 //such way they don't overlap and the current point alway separte them from left and right, and the current point 
 //has the total value. compare total values and find the max and return
 
-public class _121_123_Best_Time2Buy_Sell_Stock {
+
+//122 as longas tomorrow it increases, I buy today and sell tomorrow
+public class _121_122_123_Best_Time2Buy_Sell_Stock {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -54,6 +56,16 @@ public class _121_123_Best_Time2Buy_Sell_Stock {
         }
 
         return maxProfit;
+    }
+    
+    //122 greedy 
+    public static int maxProfit2(int[] prices) {
+        int total = 0;
+    	for(int i=1; i<prices.length;i++)
+    		if(prices[i]>prices[i-1]) 
+    			total= total+ prices[i] - prices[i-1];
+    	return total;
+    	
     }
 
 
