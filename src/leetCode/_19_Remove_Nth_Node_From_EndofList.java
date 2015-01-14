@@ -1,6 +1,6 @@
 package leetCode;
 
-import leetCode._83_Remove_Duplicates_from_Sorted_List.ListNode;
+import leetCode.LinkedList._83_Remove_Duplicates_from_Sorted_List.ListNode;
 
 // define two nodes. fast node go first. Since it's in reverse order. we let first go first by n steps.
 // then slow one goes. slow and fast both go from their postions and keep goinging till fast one reaches the end(at the last node)
