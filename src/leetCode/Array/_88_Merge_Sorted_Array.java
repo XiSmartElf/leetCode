@@ -1,4 +1,7 @@
 package leetCode.Array;
+
+import java.util.Arrays;
+
 //easy one but tricky
 //go from the end of A first where is m+n-1
 //start filling big values
@@ -10,6 +13,7 @@ public class _88_Merge_Sorted_Array {
 		// TODO Auto-generated method stub
 
 		merge(new int[]{},1, new int[]{1}, 2);
+		
 	}
 
     public static void merge(int A[], int m, int B[], int n) {

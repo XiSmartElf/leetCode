@@ -7,8 +7,7 @@ package leetCode.LinkedList;
 //define a result node for returning result.next
 //define a previous node for storing value for result along the path
 
-import leetCode._19_Remove_Nth_Node_From_EndofList;
-import leetCode._19_Remove_Nth_Node_From_EndofList.ListNode;
+import leetCode.LinkedList._19_Remove_Nth_Node_From_EndofList.ListNode;
 
 public class _2_Add_Two_Numbers {
 

@@ -1,10 +1,9 @@
 package leetCode.LinkedList;
-import leetCode._19_Remove_Nth_Node_From_EndofList;
 //the fast and slow runner problem.
 //To determine cycle apprerance
 //we let two people run together. one runs faster by two next, the other runs slower by one next only.
 //if there is a cyle, the eventually will meet as the faster catches the slower one in the loop
-import leetCode._19_Remove_Nth_Node_From_EndofList.ListNode;
+import leetCode.LinkedList._19_Remove_Nth_Node_From_EndofList.ListNode;
 
 public class _141_LinkedList_Cycle {
 

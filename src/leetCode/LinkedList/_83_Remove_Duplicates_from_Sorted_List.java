@@ -2,7 +2,7 @@ package leetCode.LinkedList;
 
 //easy one.
 
-import leetCode._19_Remove_Nth_Node_From_EndofList.ListNode;
+import leetCode.LinkedList._19_Remove_Nth_Node_From_EndofList.ListNode;
 
 public class _83_Remove_Duplicates_from_Sorted_List {
 

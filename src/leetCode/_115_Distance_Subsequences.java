@@ -1,5 +1,5 @@
 package leetCode;
-//.....
+//.....similar to edit distance
 
 public class _115_Distance_Subsequences {
 

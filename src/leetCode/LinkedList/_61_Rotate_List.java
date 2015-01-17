@@ -6,7 +6,7 @@ package leetCode.LinkedList;
 //let slow goes from dummy to reaches m at m.
 //swap: fast node(end) points to the dummy.next or head. slow points to null. dummy.next is then slow.next;
 
-import leetCode._19_Remove_Nth_Node_From_EndofList.ListNode;
+import leetCode.LinkedList._19_Remove_Nth_Node_From_EndofList.ListNode;
 
 public class _61_Rotate_List {
 
@@ -23,7 +23,7 @@ public class _61_Rotate_List {
 		test4.next = test5;
 
 		ListNode firstLink = test1;
-		ListNode returnHead = rotateRight(firstLink, 5);
+		ListNode returnHead = rotateRight(firstLink, 9);
 		while(true)
 		{
 			System.out.println(returnHead.val);

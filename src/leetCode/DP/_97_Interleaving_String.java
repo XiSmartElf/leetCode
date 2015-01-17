@@ -29,9 +29,9 @@ public class _97_Interleaving_String {
                 if(i==0 && j==0)
                     table[i][j] = true;
                 else if(i == 0)
-                    table[i][j] = ( table[i][j-1] && s2.charAt(j-1) == s3.charAt(j+i-1));
+                    table[0][j] = ( table[0][j-1] && s2.charAt(j-1) == s3.charAt(j-1));
                 else if(j == 0)
-                    table[i][j] = ( table[i-1][j] && s1.charAt(i-1) == s3.charAt(i+j-1));
+                    table[i][0] = ( table[i-1][0] && s1.charAt(i-1) == s3.charAt(i-1));//index remember j=0,i= 0 is before start. so the index is real order index
                 else
                     table[i][j] = (table[i-1][j] && s1.charAt(i-1) == s3.charAt(i+j-1) ) || (table[i][j-1] && s2.charAt(j-1) == s3.charAt(i+j-1) );
             }

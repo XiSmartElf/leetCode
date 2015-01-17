@@ -1,5 +1,4 @@
 package leetCode.LinkedList;
-import leetCode._19_Remove_Nth_Node_From_EndofList;
 //Still two runner solution. But! two runner once the faster catches the slower in the loop.
 //Fast restart from the begining node with one step normally speed just like slow one, 
 //then they start going and will soon meet at the node where starts the cycle
@@ -9,7 +8,7 @@ import leetCode._19_Remove_Nth_Node_From_EndofList;
 //then S-(S-X) = X which is the meeting point away from the node starting the cyle
 //then keep going will soon meet 
 //
-import leetCode._19_Remove_Nth_Node_From_EndofList.ListNode;
+import leetCode.LinkedList._19_Remove_Nth_Node_From_EndofList.ListNode;
 
 public class _142_LinkedList_Cycle_II {
 

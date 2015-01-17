@@ -2,7 +2,7 @@ package leetCode.LinkedList;
 //get confused few times on linkedlist reference.
 // this one is not hard but easy to make mistake
 //used inseration sort
-import leetCode._24_Swap_Nodes_in_Pairs.ListNode;
+import leetCode.LinkedList._24_Swap_Nodes_in_Pairs.ListNode;
 
 public class _147_Inseration_SortList {
 
