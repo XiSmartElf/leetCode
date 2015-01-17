@@ -1,6 +1,5 @@
-package leetCode;
+package leetCode.Tree;
 ///A question must need to think later: when does varible passed to here change!
-import leetCode.Tree._101_Symmetric_Tree.TreeNode;
 
 public class _129_Sum_Root_To_Leaf_Numbers {
 

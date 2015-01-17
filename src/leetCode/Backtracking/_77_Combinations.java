@@ -1,4 +1,4 @@
-package leetCode;
+package leetCode.Backtracking;
 //recursive solution recursive for totoal number of k. return the value. easy but a bit time consuming 
 import java.util.ArrayList;
 import java.util.Arrays;

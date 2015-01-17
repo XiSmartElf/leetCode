@@ -1,4 +1,4 @@
-package leetCode;
+package leetCode.Backtracking;
 //use dp... but hard to understand
 public class _132_Palindrome_Partitioning_II {
 

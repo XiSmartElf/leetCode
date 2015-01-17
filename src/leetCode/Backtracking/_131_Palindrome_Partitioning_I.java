@@ -1,4 +1,4 @@
-package leetCode;
+package leetCode.Backtracking;
 //recursive did it. easy.
 
 import java.util.ArrayList;

@@ -1,6 +1,7 @@
 package leetCode.Tree;
 //easy one// store the sequence of one layer in a var. check the var if it';s symmetric or not. empty(null) put as 0s
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
@@ -21,7 +22,7 @@ public class _101_Symmetric_Tree {
         Queue<TreeNode> cache = new LinkedList<TreeNode>();
         TreeNode currentRoot = root;
         frontier.add(root);
-    	List<Integer> next_level = new ArrayList<Integer>();
+    	ArrayList<Integer> next_level = new ArrayList<Integer>();
     	
         while(true)
         {
@@ -46,7 +47,8 @@ public class _101_Symmetric_Tree {
 	        else
 	        {
 	            int length = next_level.size();
-                for(int i=0;i<length/2;i++)
+	            
+	            for(int i=0;i<length/2;i++)
                 {
                     if(next_level.get(length/2-1-i)!=next_level.get(length/2-1+1+i))
                         return false;
