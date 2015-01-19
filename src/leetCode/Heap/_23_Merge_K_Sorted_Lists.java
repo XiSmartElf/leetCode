@@ -6,8 +6,6 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.PriorityQueue;
 
-import leetCode.LinkedList._21_Merge_Two_Sorted_Lists.ListNode;
-
 public class _23_Merge_K_Sorted_Lists {
 
 	public static void main(String[] args) {
@@ -22,7 +20,6 @@ public class _23_Merge_K_Sorted_Lists {
         if (lists==null||lists.size()==0) return null;
         
     	PriorityQueue<ListNode>  queue = new PriorityQueue<ListNode>(len,new Comparator<ListNode>(){
-        @Override
         public int compare(ListNode o1,ListNode o2){
             if (o1.val<o2.val)
                 return -1;

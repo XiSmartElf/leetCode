@@ -28,7 +28,6 @@ public class _126_Word_Ladder_II {
 
     public static List<List<String>> findLadders(String start, String end, Set<String> dict) {
     	PriorityQueue<node> ShortPath = new PriorityQueue<node>(dict.size()* start.length(), new Comparator<node>(){
-            @Override
             public int compare(node o1,node o2){
                 if (o1.evaluationVal<o2.evaluationVal)
                     return -1;
