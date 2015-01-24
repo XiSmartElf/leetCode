@@ -17,8 +17,10 @@ public class _149_MaxPoint_On_a_Line {
 	}
 
     public int maxPoints(Point[] points) {
+
         if (points.length <= 2){
             return points.length;
+
         }
         int result=1;
 
