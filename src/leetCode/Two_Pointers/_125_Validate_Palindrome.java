@@ -16,7 +16,7 @@ public class _125_Validate_Palindrome {
     	char[] c = s.toCharArray();
     	
     	int start = 0; int tail = c.length-1;
-    	while(start<=(c.length)/2 && tail>=(c.length)/2)
+    	while(start<tail)
     	{
     		if(c[start]!=c[tail])
     			return false;
