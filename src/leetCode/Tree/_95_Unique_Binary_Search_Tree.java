@@ -6,7 +6,6 @@ package leetCode.Tree;
 import java.util.ArrayList;
 import java.util.List;
 
-import leetCode.Sort._148_Sort_List.ListNode;
 
 public class _95_Unique_Binary_Search_Tree {
 

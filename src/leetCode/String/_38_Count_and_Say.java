@@ -1,4 +1,4 @@
-package leetCode;
+package leetCode.String;
 
 public class _38_Count_and_Say {
 

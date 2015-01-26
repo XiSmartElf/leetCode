@@ -13,6 +13,7 @@ public class _8_String_To_Integer {
             return 0;
         int i; 
         boolean positive = true;
+
         if((str.charAt(0)-'0')<=9 && (str.charAt(0)-'0'>=0)) //if first one is a number
         {
             char c= str.charAt(0);

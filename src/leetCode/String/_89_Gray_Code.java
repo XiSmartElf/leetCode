@@ -1,4 +1,4 @@
-package leetCode;
+package leetCode.String;
 
 //idea is this:
 //we shift 1 to left one more time loop by loop
