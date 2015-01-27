@@ -1,5 +1,5 @@
-package leetCode;
-
+package leetCode.String;
+//dups?!!
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
