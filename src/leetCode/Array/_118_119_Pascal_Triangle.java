@@ -11,7 +11,7 @@ public class _118_119_Pascal_Triangle {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
         List<List<Integer>> res = new ArrayList<List<Integer>>();
-		int numRows=5;
+		int numRows=200;
 		Integer[]lastRow={};
 		for(int row=0; row < numRows;row++)
 		{

@@ -7,7 +7,7 @@ public class _68_Text_Justification {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		System.out.println(fullJustify(new String[]{"Here","is","an","example","of","text","justification."},16));
+		System.out.println(fullJustify(new String[]{"Here","is","an","example","of","text","justification."},20));
 	}
     public static List<String> fullJustify(String[] words, int L) {
         int length = L;
