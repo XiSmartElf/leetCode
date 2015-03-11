@@ -1,6 +1,7 @@
 package leetCode.Backtracking;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 
 //easy easy.. list is used to dynamically remove items for recursive instead of array.
@@ -13,42 +14,33 @@ public class _46_47_Permutation {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		System.out.println(permute(new int[]{1,0}));
+		System.out.println(permuteUnique(new int[]{-1,-1,3,-1}));
 	}
 	
-    public static List<List<Integer>> permute(int[] S) {
-        //Arrays.sort(S);
-        List<Integer> res = new ArrayList<Integer>();
-        ArrayList<Integer> input = new ArrayList<Integer>();
-        for(int i=0; i<S.length;i++)
-            input.add(S[i]);
-        return findP(input,res);
-    }
-
-    public static List<List<Integer>> findP(ArrayList<Integer> S, List<Integer>prevSet)
-    {
-        List<List<Integer>> res = new  ArrayList<List<Integer>>();
-        ArrayList<Integer> visited = new ArrayList<Integer>();
-
-        for(int i=0; i<S.size();i++)
-        {
-            if(!visited.contains(S.get(i)))
-            {
-                List<Integer>set = new ArrayList<Integer>();
-                set.addAll(prevSet);
-                set.add(S.get(i));
-                if(S.size()==1)
-                    res.add(set);
-                else
-                {	
-                	ArrayList<Integer> s = (ArrayList<Integer>) S.clone();
-                	s.remove(i);
-                    res.addAll(findP(s,set));
-                }
-                visited.add(S.get(i));
-            }
-        }
+    public static List<List<Integer>> permuteUnique(int[] S) {
+        if(S.length==0) return res;
+        helper(new ArrayList<Integer>(), S, new HashSet<Integer>());
         return res;
+    }
+    
+    public static List<List<Integer>> res = new ArrayList<List<Integer>>();
+    
+    public static void helper(List<Integer>preSet, int[] num, HashSet<Integer>indices)
+    {
+        for(int i=0; i<num.length; i++)
+        {
+            if(indices.contains(i))
+                continue;
+            List<Integer> set = new ArrayList<Integer>(preSet);
+            HashSet<Integer> newIndices = new HashSet<Integer>(indices);
+            newIndices.add(i);
+            set.add(num[i]);
+            
+            if(set.size()<num.length)
+                helper(set, num, newIndices);
+            else if(set.size()==num.length)
+                res.add(set);
+        }
     }
 
 }
