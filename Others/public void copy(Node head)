@@ -1,0 +1,34 @@
+
+public int remove(int[] arr)
+{
+	if(arr.length==0) return -1;
+	HashMap<Integer> map....
+	int right = arr.length-1;
+	int left = 0;
+	for(; left<=right; left++)
+	{
+		while(map.contains(arr[left]) && left<=right)
+		{
+			swap(arr, left, right);
+			right--;
+		}
+
+	}
+	if(map.contains(arr[left]))
+		return left-1+1;
+	else
+		return left+1;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -10,7 +10,7 @@ public int randomBaseOnWeight(int[] arr, int[] weight)
     int loc = randVal*sum;
     for(int i=0;i<arr.length; i++)
     {
-        if(loc<arr[i])
+        if(loc<weighti])
             return arr[i];
         loc-=arr[i];
     }
